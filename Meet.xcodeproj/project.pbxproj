@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,8 @@
 		0B8C211A259711A500866AA6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B8C2119259711A500866AA6 /* Preview Assets.xcassets */; };
 		0B8C21232597167D00866AA6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8C21222597167D00866AA6 /* HomeView.swift */; };
 		0B8C212C2597256F00866AA6 /* Animatable+Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8C212B2597256F00866AA6 /* Animatable+Modifier.swift */; };
+		0B8C212F2597266800866AA6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8C212E2597266800866AA6 /* Model.swift */; };
+		0B8C21322597535100866AA6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8C21312597535100866AA6 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		0B8C211B259711A500866AA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B8C21222597167D00866AA6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0B8C212B2597256F00866AA6 /* Animatable+Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animatable+Modifier.swift"; sourceTree = "<group>"; };
+		0B8C212E2597266800866AA6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		0B8C21312597535100866AA6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				0B8C2118259711A500866AA6 /* Preview Content */,
 				0B8C21222597167D00866AA6 /* HomeView.swift */,
 				0B8C212B2597256F00866AA6 /* Animatable+Modifier.swift */,
+				0B8C212E2597266800866AA6 /* Model.swift */,
+				0B8C21312597535100866AA6 /* ViewModel.swift */,
 			);
 			path = Meet;
 			sourceTree = "<group>";
@@ -121,7 +127,6 @@
 			);
 			mainGroup = 0B8C2106259711A300866AA6;
 			packageReferences = (
-				0B8C212525971ABA00866AA6 /* XCRemoteSwiftPackageReference "FontAwesomeSwiftUI" */,
 			);
 			productRefGroup = 0B8C2110259711A300866AA6 /* Products */;
 			projectDirPath = "";
@@ -149,9 +154,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B8C212F2597266800866AA6 /* Model.swift in Sources */,
 				0B8C212C2597256F00866AA6 /* Animatable+Modifier.swift in Sources */,
 				0B8C21232597167D00866AA6 /* HomeView.swift in Sources */,
 				0B8C2115259711A300866AA6 /* ContentView.swift in Sources */,
+				0B8C21322597535100866AA6 /* ViewModel.swift in Sources */,
 				0B8C2113259711A300866AA6 /* MeetApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,17 +348,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		0B8C212525971ABA00866AA6 /* XCRemoteSwiftPackageReference "FontAwesomeSwiftUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onmyway133/FontAwesomeSwiftUI";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.4;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 0B8C2107259711A300866AA6 /* Project object */;
 }
