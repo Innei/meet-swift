@@ -22,24 +22,40 @@ class HitokotoViewModel {
 
     private(set) static var userDefaults = UserDefaults()
 
-    private static let storeKey = "like-list"
+    public static let storeKey = "like-list"
+
+    public static let like = Like()
 
     static func storeData(add model: LikeModel) {
-        if let data = userDefaults.data(forKey: storeKey) {
-            var stored = try! PropertyListDecoder().decode([LikeModel].self, from: data)
-            if stored.first(where: { $0.id == model.id }) != nil {
-                return
-            }
-
-            stored.append(model)
-            print(stored)
-            if let data = try? PropertyListEncoder().encode(stored) {
-                userDefaults.set(data, forKey: storeKey)
-            }
-        } else {
-            if let data = try? PropertyListEncoder().encode([LikeModel]()) {
-                userDefaults.set(data, forKey: storeKey)
-            }
+        if !like.add(item: model) {
+            return
         }
+
+        refreshStore()
+    }
+
+    private static func refreshStore() {
+        if let data = try? PropertyListEncoder().encode(like.codable) {
+            userDefaults.set(data, forKey: storeKey)
+        }
+    }
+
+    static func storeData(removeUUID uuid: UUID) {
+        if like.remove(uuid: uuid) == nil {
+            return
+        }
+        refreshStore()
+    }
+
+    static func storeData(removeAtIndexSet indexSet: IndexSet) {
+        like.likes.remove(atOffsets: indexSet)
+        refreshStore()
+    }
+
+    static func isStored(uuid: UUID?) -> Bool {
+        if uuid == nil {
+            return false
+        }
+        return like.likes.first(where: { $0.id == uuid }) != nil
     }
 }

@@ -60,7 +60,7 @@ struct HitokotoModel: Codable {
     }
 }
 
-struct LikeModel: Codable, Identifiable {
+struct LikeModel: Codable, Identifiable, Equatable, Hashable {
     var id: UUID = UUID()
     var text: String
     var createdAt: Date = Date()

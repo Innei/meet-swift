@@ -11,7 +11,7 @@ struct HomeView: View {
     @State var model: HitokotoModel? = nil
 
     func fetch() {
-        model = nil
+//        model = nil
         HitokotoViewModel.fetch {
             self.model = $0
         }
@@ -27,7 +27,7 @@ struct HomeView: View {
                     }
                     .position(x: reader.size.width - 50, y: reader.size.height - 50)
 
-                    ActionView(model: model)
+                    ActionView(model: $model)
                         .offset(x: 0, y: reader.size.height / 2 - 60)
                 }
             }
@@ -50,7 +50,7 @@ struct CircleButton: View {
         }, label: {
             ZStack {
                 Circle()
-                    .fill(Color.blue)
+                    .fill(Color.pink)
                     .frame(width: 50, height: 50, alignment: .center)
                     .shadow(radius: 3)
                 Image(systemName: "arrow.clockwise").foregroundColor(.white)
@@ -99,18 +99,36 @@ struct Preview: View {
 }
 
 struct ActionView: View {
-    var model: HitokotoModel?
-    @State var liked = false
+    @EnvironmentObject var like: Like
+
+    @Binding var model: HitokotoModel?
+
+    var liked: Bool {
+        if let model = model {
+            return like.likes.first(where: { $0.id == (UUID(uuidString: model.uuid) ?? UUID()) }) != nil
+
+        } else {
+            return false
+        }
+    }
+
     @ViewBuilder
     var body: some View {
         if let model = model {
             HStack(spacing: 20) {
                 Button(action: {
-                    HitokotoViewModel.storeData(add: LikeModel(id: UUID(uuidString: model.uuid) ?? UUID(), text: model.hitokoto, createdAt: Date(), from: model.from, author: model.creator))
+                    if HitokotoViewModel.isStored(uuid: UUID(uuidString: model.uuid)) {
+                        if let uuid = UUID(uuidString: model.uuid) {
+                            HitokotoViewModel.storeData(removeUUID: uuid)
+                        }
 
-                    withAnimation {
-                        liked.toggle()
+                    } else {
+                        HitokotoViewModel.storeData(add: LikeModel(id: UUID(uuidString: model.uuid) ?? UUID(), text: model.hitokoto, createdAt: Date(), from: model.from, author: model.creator))
                     }
+
+//                    withAnimation {
+//                        liked.toggle()
+//                    }
                 }, label: {
                     Image(systemName: liked ? "suit.heart.fill" : "suit.heart")
                         .foregroundColor(liked ? .red : .primary)
