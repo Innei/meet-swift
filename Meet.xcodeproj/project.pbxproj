@@ -17,6 +17,8 @@
 		0B8C21322597535100866AA6 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8C21312597535100866AA6 /* ViewModel.swift */; };
 		0B8C21372598226F00866AA6 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8C21362598226F00866AA6 /* Like.swift */; };
 		0B8C213A2598297C00866AA6 /* LikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8C21392598297C00866AA6 /* LikeView.swift */; };
+		0B8C21412598537A00866AA6 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8C21402598537A00866AA6 /* CreateView.swift */; };
+		0B8C2144259858BA00866AA6 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8C2143259858BA00866AA6 /* Shape.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		0B8C21312597535100866AA6 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		0B8C21362598226F00866AA6 /* Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
 		0B8C21392598297C00866AA6 /* LikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeView.swift; sourceTree = "<group>"; };
+		0B8C21402598537A00866AA6 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
+		0B8C2143259858BA00866AA6 /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 				0B8C21312597535100866AA6 /* ViewModel.swift */,
 				0B8C21392598297C00866AA6 /* LikeView.swift */,
 				0B8C21362598226F00866AA6 /* Like.swift */,
+				0B8C21402598537A00866AA6 /* CreateView.swift */,
+				0B8C2143259858BA00866AA6 /* Shape.swift */,
 			);
 			path = Meet;
 			sourceTree = "<group>";
@@ -161,9 +167,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B8C212F2597266800866AA6 /* Model.swift in Sources */,
+				0B8C21412598537A00866AA6 /* CreateView.swift in Sources */,
 				0B8C213A2598297C00866AA6 /* LikeView.swift in Sources */,
 				0B8C21372598226F00866AA6 /* Like.swift in Sources */,
 				0B8C212C2597256F00866AA6 /* Animatable+Modifier.swift in Sources */,
+				0B8C2144259858BA00866AA6 /* Shape.swift in Sources */,
 				0B8C21232597167D00866AA6 /* HomeView.swift in Sources */,
 				0B8C2115259711A300866AA6 /* ContentView.swift in Sources */,
 				0B8C21322597535100866AA6 /* ViewModel.swift in Sources */,

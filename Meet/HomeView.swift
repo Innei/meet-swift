@@ -42,25 +42,20 @@ struct HomeView: View {
 struct CircleButton: View {
     @State var routeDeg: Double = 0
     var onPress: () -> Void
+
     var body: some View {
         Button(action: {
             withAnimation(.spring()) {
                 routeDeg = 720
             }
         }, label: {
-            ZStack {
-                Circle()
-                    .fill(Color.pink)
-                    .frame(width: 50, height: 50, alignment: .center)
-                    .shadow(radius: 3)
-                Image(systemName: "arrow.clockwise").foregroundColor(.white)
-            }
-            .modifier(AnimatableModifierDouble(bindedValue: routeDeg) {
-                onPress()
-                self.routeDeg = 0
+            CircleButtonShape(systemImage: "arrow.clockwise")
+                .modifier(AnimatableModifierDouble(bindedValue: routeDeg) {
+                    onPress()
+                    self.routeDeg = 0
 
-            })
-            .rotationEffect(.degrees(routeDeg))
+                })
+                .rotationEffect(.degrees(routeDeg))
         })
     }
 }

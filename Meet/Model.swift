@@ -64,8 +64,8 @@ struct LikeModel: Codable, Identifiable, Equatable, Hashable {
     var id: UUID = UUID()
     var text: String
     var createdAt: Date = Date()
-    var from: String
-    var author: String
+    var from: String?
+    var author: String?
 }
 
 // MARK: - Encode/decode helpers

@@ -17,7 +17,7 @@ struct MeetApp: App {
         return WindowGroup {
             TabView(selection: $activeTabIndex) {
                 ContentView().tabItem {
-                    Label("遇见", systemImage: "largecircle.fill.circle")
+                    Label("遇见", systemImage: activeTabIndex != 0 ? "circle" : "largecircle.fill.circle")
                         .onTapGesture {
                             activeTabIndex = 0
                         }

@@ -52,6 +52,16 @@ class HitokotoViewModel {
         refreshStore()
     }
 
+    static func clearStoreData() {
+        like.likes.removeAll()
+        refreshStore()
+    }
+
+    static func swap(from: IndexSet, to: Int) {
+        like.likes.move(fromOffsets: from, toOffset: to)
+        refreshStore()
+    }
+
     static func isStored(uuid: UUID?) -> Bool {
         if uuid == nil {
             return false
