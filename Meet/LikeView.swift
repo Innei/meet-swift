@@ -11,7 +11,6 @@ struct LikeView: View {
     @EnvironmentObject var like: Like
     @State var editMode: EditMode = .inactive
     @State var isModalSheetShown: Bool = false
-
     @State var selectItem: LikeModel? = nil
 
     var body: some View {

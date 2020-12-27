@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import UIKit
 struct HomeView: View {
     @State var model: HitokotoModel? = nil
 
@@ -107,6 +107,8 @@ struct ActionView: View {
         }
     }
 
+    @State private var showShareSheet = false
+
     @ViewBuilder
     var body: some View {
         if let model = model {
@@ -121,19 +123,44 @@ struct ActionView: View {
                         HitokotoViewModel.storeData(add: LikeModel(id: UUID(uuidString: model.uuid) ?? UUID(), text: model.hitokoto, createdAt: Date(), from: model.from, author: model.creator))
                     }
 
-//                    withAnimation {
-//                        liked.toggle()
-//                    }
                 }, label: {
                     Image(systemName: liked ? "suit.heart.fill" : "suit.heart")
                         .foregroundColor(liked ? .red : .primary)
                         .font(.custom("icon", size: 28))
                 })
-
-                Image(systemName: "square.and.arrow.up")
-                    .font(.custom("icon", size: 28))
+                Button(action: {
+                    showShareSheet = true
+                }, label: {
+                    Image(systemName: "square.and.arrow.up")
+                        .font(.custom("icon", size: 28))
+                        .foregroundColor(.primary)
+                })
+            }.sheet(isPresented: $showShareSheet) {
+                ShareSheet(activityItems: ["\(model.hitokoto) -- \(model.creator )"])
             }
         }
+    }
+}
+// - MARK: https://developer.apple.com/forums/thread/123951
+struct ShareSheet: UIViewControllerRepresentable {
+    typealias Callback = (_ activityType: UIActivity.ActivityType?, _ completed: Bool, _ returnedItems: [Any]?, _ error: Error?) -> Void
+
+    let activityItems: [Any]
+    let applicationActivities: [UIActivity]? = nil
+    let excludedActivityTypes: [UIActivity.ActivityType]? = nil
+    let callback: Callback? = nil
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        let controller = UIActivityViewController(
+            activityItems: activityItems,
+            applicationActivities: applicationActivities)
+        controller.excludedActivityTypes = excludedActivityTypes
+        controller.completionWithItemsHandler = callback
+        return controller
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
+        // nothing to do here
     }
 }
 
