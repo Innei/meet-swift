@@ -114,13 +114,13 @@ struct ActionView: View {
         if let model = model {
             HStack(spacing: 20) {
                 Button(action: {
-                    if HitokotoViewModel.isStored(uuid: UUID(uuidString: model.uuid)) {
+                    if like.has(uuid: UUID(uuidString: model.uuid)) {
                         if let uuid = UUID(uuidString: model.uuid) {
-                            HitokotoViewModel.storeData(removeUUID: uuid)
+                            like.remove(uuid: uuid)
                         }
 
                     } else {
-                        HitokotoViewModel.storeData(add: LikeModel(id: UUID(uuidString: model.uuid) ?? UUID(), text: model.hitokoto, createdAt: Date(), from: model.from, author: model.creator))
+                        like.add(item: LikeModel(id: UUID(uuidString: model.uuid) ?? UUID(), text: model.hitokoto, createdAt: Date(), from: model.from, author: model.creator))
                     }
 
                 }, label: {
@@ -136,11 +136,12 @@ struct ActionView: View {
                         .foregroundColor(.primary)
                 })
             }.sheet(isPresented: $showShareSheet) {
-                ShareSheet(activityItems: ["\(model.hitokoto) -- \(model.creator )"])
+                ShareSheet(activityItems: ["\(model.hitokoto) -- \(model.creator)"])
             }
         }
     }
 }
+
 // - MARK: https://developer.apple.com/forums/thread/123951
 struct ShareSheet: UIViewControllerRepresentable {
     typealias Callback = (_ activityType: UIActivity.ActivityType?, _ completed: Bool, _ returnedItems: [Any]?, _ error: Error?) -> Void

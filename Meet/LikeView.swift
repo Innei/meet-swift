@@ -43,10 +43,10 @@ struct LikeView: View {
                         }
 
                         .onDelete(perform: { indexSet in
-                            HitokotoViewModel.storeData(removeAtIndexSet: indexSet)
+                            like.likes.remove(atOffsets: indexSet)
                         })
                         .onMove(perform: { indices, newOffset in
-                            HitokotoViewModel.swap(from: indices, to: newOffset)
+                            like.likes.move(fromOffsets: indices, toOffset: newOffset)
                         })
                     }
 
@@ -86,7 +86,7 @@ struct LikeView: View {
             })
                 .alert(isPresented: $showingAlert) {
                     Alert(title: Text("全部删除？"), message: Text("请三思哦"), primaryButton: .default(Text("嗯").foregroundColor(.red), action: {
-                        HitokotoViewModel.clearStoreData()
+                        like.likes.removeAll()
                     }), secondaryButton: .default(Text("取消"), action: {
                         showingAlert = false
                     }))

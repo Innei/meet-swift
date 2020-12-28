@@ -10,6 +10,8 @@ import SwiftUI
 struct CreateView: View {
     @Environment(\.presentationMode) var presentationMode
 
+    @EnvironmentObject var like: Like
+
     @State var text: String = ""
     @State var author: String = ""
     @State var from: String = ""
@@ -26,7 +28,7 @@ struct CreateView: View {
         .navigationBarTitle("灵感", displayMode: .inline)
         .navigationBarItems(trailing:
             Button(action: {
-                HitokotoViewModel.storeData(add: LikeModel(text: text, createdAt: Date(), from: from.isEmpty ? nil : from, author: author.isEmpty ? nil : author))
+                like.add(item: LikeModel(text: text, createdAt: Date(), from: from.isEmpty ? nil : from, author: author.isEmpty ? nil : author))
                 // back to LikeView
                 // - MARK: https://stackoverflow.com/questions/56571349/custom-back-button-for-navigationviews-navigation-bar-in-swiftui
                 self.presentationMode.wrappedValue.dismiss()

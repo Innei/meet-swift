@@ -11,10 +11,10 @@ import SwiftUI
 struct MeetApp: App {
     @State var activeTabIndex = 0
 
-    let like = HitokotoViewModel.like
+    let like = Like()
 
     var body: some Scene {
-        return WindowGroup {
+        WindowGroup {
             TabView(selection: $activeTabIndex) {
                 ContentView().tabItem {
                     Label("遇见", systemImage: activeTabIndex != 0 ? "circle" : "largecircle.fill.circle")
