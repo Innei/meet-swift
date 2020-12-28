@@ -15,11 +15,14 @@ struct CreateView: View {
     @State var from: String = ""
 
     var body: some View {
-        Form {
+        VStack {
+            Spacer().frame(width: 100, height: 80, alignment: .leading)
             Input(label: "说点什么", text: $text)
             Input(label: "作者", text: $author)
             Input(label: "来自", text: $from)
+            Spacer()
         }
+        .padding(.horizontal, 20)
         .navigationBarTitle("灵感", displayMode: .inline)
         .navigationBarItems(trailing:
             Button(action: {
